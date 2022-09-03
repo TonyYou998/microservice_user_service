@@ -13,7 +13,7 @@ public class UserController {
         return null;
     }
 
-    @PostMapping(Constant.LOGIN)
+    @PostMapping(Constant.LOGIN_USER)
     public Object loginUser(){
         return null;
     }
