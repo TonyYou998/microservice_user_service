@@ -1,18 +1,19 @@
 package com.uit.user_service.controller;
 
+import com.uit.user_service.common.Constant;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping(Constant.BASE_URL)
 public class UserController {
-    @PostMapping("/create")
+    @PostMapping(Constant.CREATE_USER)
     public Object createUser(){
         return null;
     }
 
-    @PostMapping("/login")
+    @PostMapping(Constant.LOGIN)
     public Object Login(){
         return null;
     }
