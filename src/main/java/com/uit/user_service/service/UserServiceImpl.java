@@ -28,6 +28,8 @@ public class UserServiceImpl implements UserService {
         newUser.setPhone(dto.getPhone());
         newUser.setAddress(dto.getAddress());
         newUser.setPassword(encoder.encode(dto.getPassword()));
+        newUser.setIsActive(false);
+
 //        newUser.setPassword(new BCryptPasswordEncoder().encode(dto.getPassword()));
         try{
             userRepository.save(newUser);
