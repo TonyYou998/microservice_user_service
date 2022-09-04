@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
@@ -16,6 +17,7 @@ public class UserServiceImpl implements UserService {
     private static final Logger LOGGER= LoggerFactory.getLogger(UserService.class);
     private UserRepository userRepository;
     private final ModelMapper mapper;
+    private BCryptPasswordEncoder encoder;
     @Override
     public UserDto createUser(CreateUserDto dto) {
         User newUser=new User();
@@ -25,6 +27,8 @@ public class UserServiceImpl implements UserService {
         newUser.setLastname(dto.getLastname());
         newUser.setPhone(dto.getPhone());
         newUser.setAddress(dto.getAddress());
+        newUser.setPassword(encoder.encode(dto.getPassword()));
+//        newUser.setPassword(new BCryptPasswordEncoder().encode(dto.getPassword()));
         try{
             userRepository.save(newUser);
         }
