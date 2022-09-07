@@ -1,4 +1,4 @@
-package com.uit.user_service.repository;
+package com.uit.user_service.controller.repository;
 
 import com.uit.user_service.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;

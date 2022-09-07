@@ -3,7 +3,7 @@ package com.uit.user_service.service;
 import com.uit.user_service.dto.CreateUserDto;
 import com.uit.user_service.dto.UserDto;
 import com.uit.user_service.entities.User;
-import com.uit.user_service.repository.UserRepository;
+import com.uit.user_service.controller.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
