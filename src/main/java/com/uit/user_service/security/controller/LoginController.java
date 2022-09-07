@@ -1,6 +1,5 @@
 package com.uit.user_service.security.controller;
 import com.uit.user_service.common.Constant;
-
 import com.uit.user_service.dto.LoginDto;
 import com.uit.user_service.security.jwt.JwtUtils;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.validation.Valid;
 
 @RestController
@@ -24,10 +22,10 @@ public class LoginController {
 
     public LoginController(AuthenticationManager authenticationManager, JwtUtils jwtUtils) {
         this.authenticationManager = authenticationManager;
-        this.jwtUtils=jwtUtils;
+        this.jwtUtils = jwtUtils;
     }
 
-    @PostMapping(Constant.LOGIN_USER)
+    @PostMapping("/get-token")
     public Object login(@Valid @RequestBody LoginDto dto, BindingResult err) {
         if(err.hasErrors())   return "ERROR";
 
@@ -37,7 +35,6 @@ public class LoginController {
             SecurityContextHolder.getContext().setAuthentication(auth);
             String token = jwtUtils.generateJwtToken(auth);
             return token;
-
         } catch (Exception e) {
             System.out.println(e);
         }

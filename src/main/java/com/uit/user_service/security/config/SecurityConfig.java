@@ -1,6 +1,4 @@
 package com.uit.user_service.security.config;
-
-
 import com.uit.user_service.security.jwt.JwtAuthorizationFilter;
 import com.uit.user_service.security.service.UserDetailsServiceImpl;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
@@ -22,7 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.uit.user_service.common.Constant;
 import java.net.HttpCookie;
 import java.net.PasswordAuthentication;
-
+import com.uit.user_service.UserServiceApplication;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -40,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     @Override
-    public AuthenticationManager authenticationManager() throws Exception{
+    public AuthenticationManager authenticationManagerBean() throws Exception{
         return super.authenticationManagerBean(); // ham check login
     }
 
@@ -55,16 +53,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.csrf().disable();
-        http.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
-        http.antMatcher("/api/v1/**").
-                authorizeRequests().
-//		admin
-        antMatchers("/api/v1/admin/**")
-                .hasAnyRole("Admin")
-//		api
-                .antMatchers("/api/v1/user/**")
-                .permitAll();
 
+        http.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
+
+        http.authorizeRequests().antMatchers("/api/v1/test").hasAuthority("user")
+                .and()
+                .formLogin().permitAll().and().httpBasic();
     }
 
 

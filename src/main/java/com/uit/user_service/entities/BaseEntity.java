@@ -1,5 +1,6 @@
 package com.uit.user_service.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -7,11 +8,9 @@ import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 @MappedSuperclass
@@ -20,14 +19,45 @@ import java.util.UUID;
 @Setter
 public class BaseEntity {
     @Id
-    @GeneratedValue(generator = "UUID")
-    @Type(type = "uuid-char")
-    @GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
-    private UUID id;
+//	id match csdl
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false,unique = true)
 
+    protected Long id;
+    @JsonIgnore
     @CreatedDate
-    private LocalDateTime createAt;
+    @DateTimeFormat
+//	@JsonFormat
 
+    protected LocalDateTime createAt;
+    @JsonIgnore
     @LastModifiedDate
-    private LocalDateTime updateAt;
+    @DateTimeFormat
+//	@JsonFormat
+
+    protected LocalDateTime updateAt;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(LocalDateTime createAt) {
+        this.createAt = createAt;
+    }
+
+    public LocalDateTime getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(LocalDateTime updateAt) {
+        this.updateAt = updateAt;
+    }
 }

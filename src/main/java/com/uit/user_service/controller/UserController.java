@@ -27,4 +27,9 @@ public class UserController {
     public Object loginUser(){
         return null;
     }
+
+    @GetMapping("/test")
+    public String test(){
+        return "abc";
+    }
 }
