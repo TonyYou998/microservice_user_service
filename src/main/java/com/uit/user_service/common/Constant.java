@@ -10,5 +10,5 @@ public class Constant {
 
 
 
-    public static final String USERNAME_IS_NOT_EXISTED = "Username is not existed";
+
 }
