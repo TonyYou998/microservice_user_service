@@ -24,10 +24,10 @@ public class UserController {
     }
 
 
-    @PostMapping(Constant.LOGIN_USER)
-    public Object loginUser(){
-        return null;
-    }
+//    @PostMapping(Constant.LOGIN_USER)
+//    public Object loginUser(){
+//        return null;
+//    }
 
     @GetMapping("/test")
     public String test(){

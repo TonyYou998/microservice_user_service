@@ -25,8 +25,6 @@ public class JwtUtils {
 				
 				.signWith(SignatureAlgorithm.HS512, jwtSecret)
 				.compact();
-		
-		
 	}
 	public String getjwtTokenFromRequest(HttpServletRequest request) {
 		// TODO Auto-generated method stub

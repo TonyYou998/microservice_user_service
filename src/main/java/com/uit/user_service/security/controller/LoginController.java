@@ -27,7 +27,7 @@ public class LoginController {
         this.jwtUtils = jwtUtils;
     }
 
-    @PostMapping(Constant.RETURN_TOKEN)
+    @PostMapping(Constant.LOGIN_USER)
     public Object login(@Valid @RequestBody LoginDto dto, BindingResult err) {
         if(err.hasErrors())   return Constant.ERROR;
 
