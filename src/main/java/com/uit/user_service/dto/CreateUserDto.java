@@ -26,8 +26,6 @@ public class CreateUserDto {
     @NotEmpty
     private String address;
 //    private UUID id;
-@NotEmpty
-    private String role;
 
 
 }

@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
         newUser.setLastname(dto.getLastname());
         newUser.setPhone(dto.getPhone());
         newUser.setAddress(dto.getAddress());
-        newUser.setRole(dto.getRole());
+        newUser.setRole("User");
         newUser.setPassword(encoder.encode(dto.getPassword()));
         newUser.setIsActive(false);
 
