@@ -11,7 +11,7 @@ import java.util.Date;
 @Component
 public class JwtUtils {
 	private Long jwtExpiration = 3600000L;
-	private String jwtSecret = "tanvuu998@gmail.com";
+	private String jwtSecret = "datthanhphan21@gmail.com";
 	private String authHeader = "Authorization";
 	private String tokenPrefix = "Bearer ";
 	public String generateJwtToken(Authentication authentication) {
@@ -57,6 +57,5 @@ public class JwtUtils {
 	public String getUsernameFromToken(String token) {
 		// TODO Auto-generated method stub
 		return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
-	
 	}
 }

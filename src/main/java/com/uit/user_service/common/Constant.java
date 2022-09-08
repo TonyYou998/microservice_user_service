@@ -5,4 +5,10 @@ public class Constant {
     public static final String CREATE_USER="/user/create";
 
     public static final String LOGIN_USER = "/user/login";
+
+    public static final String RETURN_TOKEN = "/return-token";
+
+
+
+    public static final String USERNAME_IS_NOT_EXISTED = "Username is not existed";
 }

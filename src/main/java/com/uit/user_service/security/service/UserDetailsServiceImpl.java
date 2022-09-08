@@ -1,6 +1,7 @@
 package com.uit.user_service.security.service;
 
 
+import com.uit.user_service.common.Constant;
 import com.uit.user_service.controller.repository.UserRepository;
 import com.uit.user_service.entities.User;
 import com.uit.user_service.security.dto.UserDetailDto;
@@ -28,7 +29,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         System.out.println(user.get().getUsername());
         Set<GrantedAuthority> authorities= getAuthorities(user.get().getRole());
         if(!user.isPresent())
-            throw new UsernameNotFoundException("Username is not existed.");
+            throw new UsernameNotFoundException(Constant.USERNAME_IS_NOT_EXISTED);
 
        return new UserDetailDto(username, user.get().getPassword(), authorities);
     }
