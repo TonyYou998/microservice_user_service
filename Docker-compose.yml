@@ -5,7 +5,7 @@ services:
     image: mysql:5.7
     restart: always
     ports:
-      - 3334:3306
+      - 3335:3306
     environment:
       - MYSQL_ROOT_PASSWORD=1234
       - MYSQL_DATABASE=user_db

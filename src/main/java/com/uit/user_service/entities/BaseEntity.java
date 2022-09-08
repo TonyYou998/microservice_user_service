@@ -18,12 +18,17 @@ import java.util.UUID;
 @Getter
 @Setter
 public class BaseEntity {
-    @Id
-//	id match csdl
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false,unique = true)
-
-    protected Long id;
+//    @Id
+////	id match csdl
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(updatable = false,unique = true)
+//
+//    protected Long id;
+@Id
+@GeneratedValue(generator = "UUID")
+@Type(type = "uuid-char")
+@GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
+private UUID id;
     @JsonIgnore
     @CreatedDate
     @DateTimeFormat
