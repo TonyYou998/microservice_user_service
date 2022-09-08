@@ -20,7 +20,7 @@ public class LoginController {
     private final AuthenticationManager authenticationManager;
     private final JwtUtils jwtUtils;
     public  final String USER_NAME_OR_PASSWORD_INVALID = "username or password are invalid";
-    public  final String ERROR = "ERROR";
+
 
     public LoginController(AuthenticationManager authenticationManager, JwtUtils jwtUtils) {
         this.authenticationManager = authenticationManager;
@@ -29,7 +29,7 @@ public class LoginController {
 
     @PostMapping(Constant.RETURN_TOKEN)
     public Object login(@Valid @RequestBody LoginDto dto, BindingResult err) {
-        if(err.hasErrors())   return ERROR;
+        if(err.hasErrors())   return Constant.ERROR;
 
         Authentication auth = null;
         try{

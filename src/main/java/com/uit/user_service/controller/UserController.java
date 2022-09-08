@@ -14,10 +14,11 @@ import javax.validation.Valid;
 @AllArgsConstructor
 public class UserController {
     private UserService userService;
+
     @PostMapping(Constant.CREATE_USER)
     public Object createUser(@Valid @RequestBody  CreateUserDto dto, BindingResult result){
         if(result.hasErrors()){
-            return "loi";
+            return Constant.ERROR;
         }
         return userService.createUser(dto);
     }

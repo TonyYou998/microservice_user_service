@@ -8,7 +8,7 @@ public class Constant {
 
     public static final String RETURN_TOKEN = "/return-token";
 
-
+    public static final String ERROR = "ERROR";
 
 
 }

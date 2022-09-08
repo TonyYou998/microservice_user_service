@@ -58,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests().antMatchers("/api/v1/test").hasAuthority("user")
                 .and()
-                .formLogin().permitAll().and().httpBasic();
+                .formLogin().permitAll().and().httpBasic();   // test
     }
 
 
