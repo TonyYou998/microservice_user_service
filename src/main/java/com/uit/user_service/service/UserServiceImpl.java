@@ -25,12 +25,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto createUser(CreateUserDto dto) {
         User newUser=new User();
+        newUser.setUsername(dto.getUsername());
         newUser.setEmail(dto.getEmail());
         newUser.setFirstname(dto.getFirstname());
         newUser.setPassword(dto.getPassword());
         newUser.setLastname(dto.getLastname());
         newUser.setPhone(dto.getPhone());
         newUser.setAddress(dto.getAddress());
+        newUser.setRole(dto.getRole());
         newUser.setPassword(encoder.encode(dto.getPassword()));
         newUser.setIsActive(false);
 

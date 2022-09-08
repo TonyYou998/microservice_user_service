@@ -25,14 +25,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private UserRepository userRepository;
     public  final String USERNAME_IS_NOT_EXISTED = "Username is not existed";
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<User> user = userRepository.findByUsernameAndRole(email);
-        System.out.println(user.get().getUsername());
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<User> user = userRepository.findByUsernameAndRole(username);
+
         Set<GrantedAuthority> authorities= getAuthorities(user.get().getRole());
         if(!user.isPresent())
             throw new UsernameNotFoundException(USERNAME_IS_NOT_EXISTED);
 
-       return new UserDetailDto(email, user.get().getPassword(), authorities);
+       return new UserDetailDto(username, user.get().getPassword(), authorities);
     }
 
     private Set<GrantedAuthority> getAuthorities(String role) {
