@@ -1,14 +1,14 @@
 version: "3.8"
 services:
   mysqldb:
-    container_name: user_db
+    container_name: ${CONTAINER_NAME}
     image: mysql:5.7
     restart: always
     ports:
-      - 3335:3306
+      - ${CONTAINER_LOCAL_PORT}:${CONTAINER_HOST_PORT}
     environment:
-      - MYSQL_ROOT_PASSWORD=1234
-      - MYSQL_DATABASE=user_db
+      - MYSQL_ROOT_PASSWORD=${DATABASE_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
     volumes:
       - db:/var/lib/mysql
 volumes:
