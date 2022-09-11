@@ -11,6 +11,8 @@ import java.util.UUID;
 @Setter
 public class CreateUserDto {
     @NotEmpty
+    private String username;
+    @NotEmpty
     @Email
     private String email;
     @NotEmpty
@@ -24,7 +26,6 @@ public class CreateUserDto {
     @NotEmpty
     private String address;
 //    private UUID id;
-
 
 
 }

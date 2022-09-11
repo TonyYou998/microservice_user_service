@@ -5,4 +5,8 @@ public class Constant {
     public static final String CREATE_USER="/user/create";
 
     public static final String LOGIN_USER = "/user/login";
+
+    public static final String ERROR = "ERROR";
+
+
 }

@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class User extends BaseEntity {
     @Column(unique = true)
     private String username;
-    @Column(unique = true)
+    //@Column(unique = true)
     private String email;
     private String password;
     private String phone;
