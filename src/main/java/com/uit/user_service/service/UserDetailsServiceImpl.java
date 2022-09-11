@@ -1,10 +1,9 @@
-package com.uit.user_service.security.service;
+package com.uit.user_service.service;
 
 
-import com.uit.user_service.common.Constant;
 import com.uit.user_service.controller.repository.UserRepository;
 import com.uit.user_service.entities.User;
-import com.uit.user_service.security.dto.UserDetailDto;
+import com.uit.user_service.dto.UserDetailDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

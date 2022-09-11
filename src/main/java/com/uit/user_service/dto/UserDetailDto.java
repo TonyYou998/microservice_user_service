@@ -1,4 +1,4 @@
-package com.uit.user_service.security.dto;
+package com.uit.user_service.dto;
 
 
 import org.springframework.security.core.GrantedAuthority;

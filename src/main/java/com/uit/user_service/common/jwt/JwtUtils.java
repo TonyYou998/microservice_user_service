@@ -1,4 +1,4 @@
-package com.uit.user_service.security.jwt;
+package com.uit.user_service.common.jwt;
 
 import io.jsonwebtoken.*;
 import org.springframework.security.core.Authentication;

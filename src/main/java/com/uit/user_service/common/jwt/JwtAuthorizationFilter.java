@@ -1,4 +1,4 @@
-package com.uit.user_service.security.jwt;
+package com.uit.user_service.common.jwt;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
