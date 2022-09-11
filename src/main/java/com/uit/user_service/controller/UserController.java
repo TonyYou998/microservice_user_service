@@ -25,6 +25,7 @@ public class UserController {
     public  final String USER_NAME_OR_PASSWORD_INVALID = "username or password are invalid";
 
 
+
     @PostMapping(Constant.CREATE_USER)
     public Object createUser(@Valid @RequestBody  CreateUserDto dto, BindingResult result){
         if(result.hasErrors()){
@@ -32,6 +33,7 @@ public class UserController {
         }
         return userService.createUser(dto);
     }
+
     @PostMapping(Constant.LOGIN_USER)
     public Object login(@Valid @RequestBody LoginDto dto, BindingResult err) {
         if(err.hasErrors())   return Constant.ERROR;
