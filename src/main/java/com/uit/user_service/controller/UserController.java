@@ -26,6 +26,7 @@ public class UserController {
 
 
 
+    @CrossOrigin
     @PostMapping(Constant.CREATE_USER)
     public Object createUser(@Valid @RequestBody  CreateUserDto dto, BindingResult result){
         if(result.hasErrors()){
@@ -34,6 +35,7 @@ public class UserController {
         return userService.createUser(dto);
     }
 
+    @CrossOrigin
     @PostMapping(Constant.LOGIN_USER)
     public Object login(@Valid @RequestBody LoginDto dto, BindingResult err) {
         if(err.hasErrors())   return Constant.ERROR;
