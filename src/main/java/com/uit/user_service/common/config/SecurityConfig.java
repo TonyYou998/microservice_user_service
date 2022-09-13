@@ -1,4 +1,5 @@
 package com.uit.user_service.common.config;
+import com.uit.microservice_base_project.config.BaseSecurityConfig;
 import com.uit.user_service.common.jwt.JwtAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,8 +17,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-@EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+//@EnableWebSecurity
+public class SecurityConfig extends BaseSecurityConfig {
     @Autowired
     @Qualifier("userDetailsServiceImpl")
     private UserDetailsService userDetailsService;
@@ -43,12 +44,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors();
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.csrf().disable();
+        super.configure(http);
         http.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
-        http.authorizeRequests().antMatchers("/api/v1/test").hasAuthority("user")
-                .and()
-                .formLogin().permitAll().and().httpBasic();   // test
+        http.authorizeRequests().antMatchers("/api/v1/user/login","/api/v1/user/create","/api/v1/host/become-a-host").permitAll()
+                .antMatchers("/api/v1/user/**","/api/v1/host/**").authenticated();
+
+//        http.cors();
+//        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+//        http.csrf().disable();
+//        http.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
+//        http.authorizeRequests().antMatchers("/api/v1/test").hasAuthority("user")
+//                .and()
+//                .formLogin().permitAll().and().httpBasic();   // test
     }
 }

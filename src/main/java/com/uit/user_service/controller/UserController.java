@@ -1,6 +1,6 @@
 package com.uit.user_service.controller;
 
-import com.uit.user_service.common.Constant;
+import com.uit.user_service.common.UserConstant;
 import com.uit.user_service.dto.CreateUserDto;
 import com.uit.user_service.dto.LoginDto;
 import com.uit.user_service.common.jwt.JwtUtils;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(Constant.BASE_URL)
+@RequestMapping(UserConstant.BASE_URL)
 @AllArgsConstructor
 public class UserController {
     private UserService userService;
@@ -27,18 +27,18 @@ public class UserController {
 
 
     @CrossOrigin
-    @PostMapping(Constant.CREATE_USER)
+    @PostMapping(UserConstant.CREATE_USER)
     public Object createUser(@Valid @RequestBody  CreateUserDto dto, BindingResult result){
         if(result.hasErrors()){
-            return Constant.ERROR;
+            return UserConstant.ERROR;
         }
         return userService.createUser(dto);
     }
 
     @CrossOrigin
-    @PostMapping(Constant.LOGIN_USER)
+    @PostMapping(UserConstant.LOGIN_USER)
     public Object login(@Valid @RequestBody LoginDto dto, BindingResult err) {
-        if(err.hasErrors())   return Constant.ERROR;
+        if(err.hasErrors())   return UserConstant.ERROR;
 
         Authentication auth = null;
         try{
@@ -56,7 +56,10 @@ public class UserController {
 //    public Object loginUser(){
 //        return null;
 //    }
-
+    @PostMapping(UserConstant.BECOME_A_HOST)
+    public Object becomeAHost(){
+            return "become a host";
+    }
     @GetMapping("/test")
     public String test(){
         return "abc";
