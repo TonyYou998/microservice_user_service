@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(UserConstant.BASE_URL)
+@RequestMapping(UserConstant.BASE_URL+UserConstant.SERVICE_NAME)
 @AllArgsConstructor
 public class UserController {
     private UserService userService;
