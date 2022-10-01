@@ -1,15 +1,14 @@
 package com.uit.user_service.service;
 
+import com.uit.user_service.common.jwt.JwtUtils;
 import com.uit.user_service.dto.CreateUserDto;
 import com.uit.user_service.dto.UserDto;
 import com.uit.user_service.entities.User;
-import com.uit.user_service.controller.repository.UserRepository;
+import com.uit.user_service.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +17,8 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
     private static final Logger LOGGER= LoggerFactory.getLogger(UserService.class);
     private UserRepository userRepository;
-    private final ModelMapper mapper;
+    private  ModelMapper mapper;
+    private JwtUtils jwtUtils;
 
 //    private BCryptPasswordEncoder encoder;
     private PasswordEncoder encoder;
@@ -44,5 +44,11 @@ public class UserServiceImpl implements UserService {
             LOGGER.info(e.getCause().getMessage());
         }
         return mapper.map(newUser, UserDto.class);
+    }
+
+    @Override
+    public UserDto validateToken(String token) {
+        return  jwtUtils.validateJwtToken(token);
+
     }
 }

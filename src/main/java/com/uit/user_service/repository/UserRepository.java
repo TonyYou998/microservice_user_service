@@ -1,4 +1,4 @@
-package com.uit.user_service.controller.repository;
+package com.uit.user_service.repository;
 
 import com.uit.user_service.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,4 +13,6 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     /// select user
     @Query(value= "SELECT * FROM user  WHERE username = ?1",  nativeQuery=true)
     Optional<User> findByUsernameAndRole(String email);
+
+    User findByUsername(String username);
 }

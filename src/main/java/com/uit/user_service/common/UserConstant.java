@@ -13,4 +13,5 @@ public class UserConstant extends BaseConstant {
 
 
     public static final String SERVICE_NAME ="user" ;
+    public static final String VALIDATE_TOKEN ="/validate" ;
 }
