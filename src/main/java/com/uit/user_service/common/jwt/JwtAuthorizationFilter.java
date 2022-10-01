@@ -1,5 +1,6 @@
 package com.uit.user_service.common.jwt;
 
+import com.uit.user_service.dto.UserDto;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,7 +30,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 		// TODO Auto-generated method stub
 		try {
 			String token=jwtUtils.getjwtTokenFromRequest(request);
-			if(token!=null && jwtUtils.validateJwtToken(token)) {
+			if(token!=null && new UserDto().isExist(jwtUtils.validateJwtToken(token))) {
 				String username = jwtUtils.getUsernameFromToken(token);
 				UserDetails userDetails=userDetailService.loadUserByUsername(username);
 				Authentication auth=new UsernamePasswordAuthenticationToken(username,	null,userDetails.getAuthorities());

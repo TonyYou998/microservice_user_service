@@ -18,4 +18,11 @@ public class UserDto {
     private UUID id;
     private LocalDateTime createAt;
     private LocalDateTime updateAt;
+    public Boolean isExist(UserDto dto){
+        if(dto!=null)
+            return true;
+        return false;
+
+    }
+
 }

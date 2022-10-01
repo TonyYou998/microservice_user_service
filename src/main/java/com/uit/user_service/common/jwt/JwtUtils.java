@@ -1,6 +1,13 @@
 package com.uit.user_service.common.jwt;
 
+import com.uit.user_service.dto.UserDto;
+import com.uit.user_service.entities.User;
+import com.uit.user_service.repository.UserRepository;
+import io.github.cdimascio.dotenv.Dotenv;
 import io.jsonwebtoken.*;
+import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -8,18 +15,33 @@ import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.Optional;
+
 @Component
+
 public class JwtUtils {
+	public JwtUtils() {}
+
+
+	@Autowired
+	private  UserRepository userRepository;
+	private Dotenv dotenv=Dotenv.load();
+	@Autowired
+	private ModelMapper mapper;
+
+
 	private Long jwtExpiration = 3600000L;
-	private String jwtSecret = "datthanhphan21@gmail.com";
+	private String jwtSecret =dotenv.get("JWT_SECRET_KEY");
 	private String authHeader = "Authorization";
 	private String tokenPrefix = "Bearer ";
 	public String generateJwtToken(Authentication authentication) {
+
 		UserDetails userDetails=(UserDetails) authentication.getPrincipal();
 		Date now= new Date();
-		
+
 		return Jwts.builder()
 				.setSubject(userDetails.getUsername())
+				.setHeaderParam("role",userDetails.getAuthorities().stream().findFirst().get().toString())
 				.setIssuedAt(now)
 				.setExpiration(new Date(now.getTime()+jwtExpiration))
 				.signWith(SignatureAlgorithm.HS512, jwtSecret)
@@ -33,11 +55,15 @@ public class JwtUtils {
 		}
 		return null;
 	}
-	public boolean validateJwtToken(String token) {
+	public UserDto validateJwtToken(String token) {
 		// TODO Auto-generated method stub
+		String username;
 		try {
-			 Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
-			return true;
+			  username= Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
+				User user= userRepository.findByUsername(username);
+			 return mapper.map(user,UserDto.class);
+
+
 		}  catch (SignatureException e1) {
 			System.out.println( e1.getMessage());
 		} catch (ExpiredJwtException e2) {
@@ -49,7 +75,7 @@ public class JwtUtils {
 		} catch (UnsupportedJwtException e5) {
 			System.out.println( e5.getMessage());
 		}
-		return false;
+		return null;
 	}
 	public String getUsernameFromToken(String token) {
 		// TODO Auto-generated method stub
