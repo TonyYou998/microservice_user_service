@@ -30,7 +30,7 @@ public class JwtUtils {
 	private ModelMapper mapper;
 
 
-	private Long jwtExpiration = 3600000L;
+	private Long jwtExpiration = 36000000000L;
 	private String jwtSecret =dotenv.get("JWT_SECRET_KEY");
 	private String authHeader = "Authorization";
 	private String tokenPrefix = "Bearer ";
