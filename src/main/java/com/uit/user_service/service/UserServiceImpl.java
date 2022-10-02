@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @AllArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
@@ -50,5 +52,15 @@ public class UserServiceImpl implements UserService {
     public UserDto validateToken(String token) {
         return  jwtUtils.validateJwtToken(token);
 
+    }
+
+    @Override
+    public User getUserInfoByUuid(String uuid) {
+        return userRepository.findById(UUID.fromString(uuid)).get();
+    }
+
+    @Override
+    public User saveUser(User u) {
+        return userRepository.save(u);
     }
 }

@@ -46,8 +46,7 @@ public class SecurityConfig extends BaseSecurityConfig {
     protected void configure(HttpSecurity http) throws Exception {
         super.configure(http);
         http.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
-        http.authorizeRequests().antMatchers("/api/v1/user/login","/api/v1/user/create","/api/v1/host/become-a-host","/api/v1/user/validate","/api/v1/user/test").permitAll()
-                .antMatchers("/api/v1/user/**","/api/v1/host/**").authenticated();
+        http.authorizeRequests().antMatchers("/api/v1/user/**").permitAll();
 
 //        http.cors();
 //        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
