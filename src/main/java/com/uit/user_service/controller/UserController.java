@@ -6,6 +6,7 @@ import com.uit.user_service.common.UserConstant;
 import com.uit.user_service.common.jwt.JwtUtils;
 import com.uit.user_service.dto.CreateUserDto;
 import com.uit.user_service.dto.LoginDto;
+import com.uit.user_service.entities.User;
 import com.uit.user_service.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,7 +29,7 @@ public class UserController {
 
 
 
-    @CrossOrigin
+
     @PostMapping(UserConstant.CREATE_USER)
     public Object createUser(@Valid @RequestBody CreateUserDto dto, BindingResult result){
         if(result.hasErrors()){
@@ -42,7 +43,7 @@ public class UserController {
 
     }
 
-    @CrossOrigin
+
     @PostMapping(UserConstant.LOGIN_USER)
     public Object login(@Valid @RequestBody LoginDto dto, BindingResult err) {
         if(err.hasErrors())   return UserConstant.ERROR;
@@ -68,5 +69,13 @@ public class UserController {
     @GetMapping("/test")
     public String test(){
         return "abc";
+    }
+    @GetMapping("/changeRoleByUuid")
+    public User changeRoleByUuid(@RequestParam String uuid){
+
+        User u= userService.getUserInfoByUuid(uuid);
+        u.setRole("Host");
+        return userService.saveUser(u);
+
     }
 }
