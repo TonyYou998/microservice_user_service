@@ -11,7 +11,7 @@ public class UserConstant extends BaseConstant {
 
     public static final String ERROR = "ERROR";
 
-
+    public static final String VERIFY = "/verify";
     public static final String SERVICE_NAME ="user" ;
     public static final String VALIDATE_TOKEN ="/validate" ;
 }
