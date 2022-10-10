@@ -27,4 +27,10 @@ public class User extends BaseEntity {
 //    voucher
     private Boolean isActive;
 //    private String loginWith;
+
+    //ver email
+    @Column(name = "verification_code", length = 64)
+    private String verificationCode;
+
+    private boolean enabled;
 }

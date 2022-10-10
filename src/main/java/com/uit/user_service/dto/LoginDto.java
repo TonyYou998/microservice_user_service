@@ -13,4 +13,5 @@ public class LoginDto {
     private String username;
     @NotEmpty
     private String password;
+
 }

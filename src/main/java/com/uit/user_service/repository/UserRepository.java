@@ -14,5 +14,8 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     @Query(value= "SELECT * FROM user  WHERE username = ?1",  nativeQuery=true)
     Optional<User> findByUsernameAndRole(String email);
 
+    @Query(value= "SELECT * FROM user WHERE verification_code = ?1",  nativeQuery=true)
+    public User findByVerificationCode(String code);
+
     User findByUsername(String username);
 }
