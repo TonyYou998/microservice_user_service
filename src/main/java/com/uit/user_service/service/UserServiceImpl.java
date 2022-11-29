@@ -50,6 +50,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto validateToken(String token) {
+
         return  jwtUtils.validateJwtToken(token);
 
     }
@@ -62,5 +63,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public User saveUser(User u) {
         return userRepository.save(u);
+    }
+
+    @Override
+    public UUID getUserId(String token) {
+        try{
+            UserDto userDto=validateToken(token.substring("Bearer".length(),token.length()));
+            return userDto.getId();
+        }
+        catch (Exception e){
+            LOGGER.info(e.getMessage());
+            return null;
+        }
+
+
     }
 }

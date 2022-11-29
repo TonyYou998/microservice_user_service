@@ -6,6 +6,7 @@ import com.uit.user_service.common.UserConstant;
 import com.uit.user_service.common.jwt.JwtUtils;
 import com.uit.user_service.dto.CreateUserDto;
 import com.uit.user_service.dto.LoginDto;
+import com.uit.user_service.dto.UserDto;
 import com.uit.user_service.entities.User;
 import com.uit.user_service.service.UserService;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(UserConstant.BASE_URL+UserConstant.SERVICE_NAME)
@@ -77,5 +79,9 @@ public class UserController {
         u.setRole("Host");
         return userService.saveUser(u);
 
+    }
+    @GetMapping(UserConstant.GET_USER_ID)
+    public UUID getUserByToken(@RequestParam String token ){
+           return userService.getUserId(token);
     }
 }
