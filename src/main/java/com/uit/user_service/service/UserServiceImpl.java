@@ -2,6 +2,7 @@ package com.uit.user_service.service;
 
 import com.uit.user_service.common.jwt.JwtUtils;
 import com.uit.user_service.dto.CreateUserDto;
+import com.uit.user_service.dto.GetPropertyDto;
 import com.uit.user_service.dto.UserDto;
 import com.uit.user_service.entities.User;
 import com.uit.user_service.repository.UserRepository;
@@ -11,7 +12,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -21,6 +24,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private  ModelMapper mapper;
     private JwtUtils jwtUtils;
+    private RestTemplate restTemplate;
 
 //    private BCryptPasswordEncoder encoder;
     private PasswordEncoder encoder;
@@ -77,5 +81,11 @@ public class UserServiceImpl implements UserService {
         }
 
 
+    }
+
+    @Override
+    public Object getRecentProperty() {
+       Object o= restTemplate.getForObject("http://host-service/api/v1/host/get-recent",Object.class);
+        return  o;
     }
 }

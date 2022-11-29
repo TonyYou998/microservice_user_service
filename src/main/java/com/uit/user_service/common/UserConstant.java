@@ -15,4 +15,5 @@ public class UserConstant extends BaseConstant {
     public static final String SERVICE_NAME ="user" ;
     public static final String VALIDATE_TOKEN ="/validate" ;
     public static final String GET_USER_ID = "/get-id";
+    public static final String GET_RECENT_PROPERTY = "/get-recent-property";
 }

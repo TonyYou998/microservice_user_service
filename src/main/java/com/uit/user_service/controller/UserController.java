@@ -2,6 +2,7 @@ package com.uit.user_service.controller;
 
 
 
+import com.uit.microservice_base_project.config.ResponseHandler;
 import com.uit.user_service.common.UserConstant;
 import com.uit.user_service.common.jwt.JwtUtils;
 import com.uit.user_service.dto.CreateUserDto;
@@ -10,6 +11,7 @@ import com.uit.user_service.dto.UserDto;
 import com.uit.user_service.entities.User;
 import com.uit.user_service.service.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -83,5 +85,9 @@ public class UserController {
     @GetMapping(UserConstant.GET_USER_ID)
     public UUID getUserByToken(@RequestParam String token ){
            return userService.getUserId(token);
+    }
+    @GetMapping(UserConstant.GET_RECENT_PROPERTY)
+    public Object getAllProperty(){
+        return ResponseHandler.getResponse(userService.getRecentProperty(), HttpStatus.OK);
     }
 }
