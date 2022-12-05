@@ -10,4 +10,7 @@ public class GetPropertyDto {
     private String address;
     private double price;
     private UUID id;
+    private String hostUser;
+    private String privacy;
+    private String propertyType;
 }

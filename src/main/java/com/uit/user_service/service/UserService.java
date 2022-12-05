@@ -22,4 +22,6 @@ public interface UserService {
     UUID getUserId(String token);
 
     Object getRecentProperty();
+
+    GetPropertyDto getPropertyById(String propertyId);
 }

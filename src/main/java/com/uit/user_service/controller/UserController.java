@@ -6,6 +6,7 @@ import com.uit.microservice_base_project.config.ResponseHandler;
 import com.uit.user_service.common.UserConstant;
 import com.uit.user_service.common.jwt.JwtUtils;
 import com.uit.user_service.dto.CreateUserDto;
+import com.uit.user_service.dto.GetPropertyDto;
 import com.uit.user_service.dto.LoginDto;
 import com.uit.user_service.dto.UserDto;
 import com.uit.user_service.entities.User;
@@ -64,10 +65,6 @@ public class UserController {
     }
 
 
-//    @PostMapping(Constant.LOGIN_USER)
-//    public Object loginUser(){
-//        return null;
-//    }
 
 
     @GetMapping("/test")
@@ -89,5 +86,14 @@ public class UserController {
     @GetMapping(UserConstant.GET_RECENT_PROPERTY)
     public Object getAllProperty(){
         return ResponseHandler.getResponse(userService.getRecentProperty(), HttpStatus.OK);
+    }
+
+    @GetMapping(UserConstant.GET_PROPERTY_BY_ID)
+    public Object getPropertyById( @PathVariable String propertyId){
+        if(propertyId.equals("")){
+            return  ResponseHandler.getResponse(HttpStatus.BAD_REQUEST);
+        }
+      return ResponseHandler.getResponse(userService.getPropertyById(propertyId),HttpStatus.OK);
+
     }
 }
