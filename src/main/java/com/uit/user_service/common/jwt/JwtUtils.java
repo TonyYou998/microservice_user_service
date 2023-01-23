@@ -1,11 +1,11 @@
 package com.uit.user_service.common.jwt;
 
-import com.uit.user_service.dto.UserDto;
+
 import com.uit.user_service.entities.User;
-import com.uit.user_service.repository.UserRepository;
+import com.uit.user_service.common.repository.UserRepository;
+import dto.UserDto;
 import io.github.cdimascio.dotenv.Dotenv;
 import io.jsonwebtoken.*;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -15,7 +15,6 @@ import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
-import java.util.Optional;
 
 @Component
 

@@ -1,6 +1,7 @@
 package com.uit.user_service.common;
 
-import com.uit.microservice_base_project.common.BaseConstant;
+
+import common.BaseConstant;
 
 public class UserConstant extends BaseConstant {
 

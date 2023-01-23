@@ -1,11 +1,11 @@
 package com.uit.user_service.service;
 
 import com.uit.user_service.common.jwt.JwtUtils;
-import com.uit.user_service.dto.CreateUserDto;
-import com.uit.user_service.dto.GetPropertyDto;
-import com.uit.user_service.dto.UserDto;
 import com.uit.user_service.entities.User;
-import com.uit.user_service.repository.UserRepository;
+import com.uit.user_service.common.repository.UserRepository;
+import dto.CreateUserDto;
+import dto.GetPropertyDto;
+import dto.UserDto;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -14,7 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor

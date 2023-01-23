@@ -1,5 +1,4 @@
 package com.uit.user_service.common.jwt;
-
 import com.uit.user_service.dto.UserDto;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -16,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 @Component
 public class JwtAuthorizationFilter extends OncePerRequestFilter {
+
+//	private final JwtUtils jwtUtils;
 	private final JwtUtils jwtUtils;
 	private final UserDetailsService userDetailService;
 	public JwtAuthorizationFilter(UserDetailsService userDetailService, JwtUtils jwtUtils) {
@@ -23,6 +24,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 		// TODO Auto-generated constructor stub
 		this.userDetailService=userDetailService;
 		this.jwtUtils=jwtUtils;
+		System.out.println("hello");
 	}
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -30,7 +32,9 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 		// TODO Auto-generated method stub
 		try {
 			String token=jwtUtils.getjwtTokenFromRequest(request);
-			if(token!=null && new UserDto().isExist(jwtUtils.validateJwtToken(token))) {
+
+//			if(token!=null && new UserDto().isExist(jwtUtils.validateJwtToken(token))) {
+			if(token !=null && new UserDto().isExist(jwtUtils.validateJwtToken(token))){
 				String username = jwtUtils.getUsernameFromToken(token);
 				UserDetails userDetails=userDetailService.loadUserByUsername(username);
 				Authentication auth=new UsernamePasswordAuthenticationToken(username,	null,userDetails.getAuthorities());

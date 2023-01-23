@@ -1,7 +1,7 @@
 package com.uit.user_service.service;
 
 
-import com.uit.user_service.repository.UserRepository;
+import com.uit.user_service.common.repository.UserRepository;
 import com.uit.user_service.entities.User;
 import com.uit.user_service.dto.UserDetailDto;
 import org.springframework.beans.factory.annotation.Autowired;
