@@ -1,9 +1,12 @@
 package com.uit.user_service.service;
 
-import com.uit.user_service.dto.CreateUserDto;
-import com.uit.user_service.dto.GetPropertyDto;
-import com.uit.user_service.dto.UserDto;
+
 import com.uit.user_service.entities.User;
+
+
+import dto.CreateUserDto;
+import dto.GetPropertyDto;
+import dto.UserDto;
 import org.springframework.validation.BindingResult;
 
 import java.util.List;
