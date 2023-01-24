@@ -1,5 +1,6 @@
 package com.uit.user_service.common.jwt;
-import com.uit.user_service.dto.UserDto;
+
+import dto.UserDto;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

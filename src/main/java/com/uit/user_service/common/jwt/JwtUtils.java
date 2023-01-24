@@ -24,13 +24,13 @@ public class JwtUtils {
 
 	@Autowired
 	private  UserRepository userRepository;
-	private Dotenv dotenv=Dotenv.load();
+//	private Dotenv dotenv=Dotenv.load();
 	@Autowired
 	private ModelMapper mapper;
 
 
 	private Long jwtExpiration = 36000000000L;
-	private String jwtSecret =dotenv.get("JWT_SECRET_KEY");
+	private String jwtSecret ="datthanhphan21@gmail.com";
 	private String authHeader = "Authorization";
 	private String tokenPrefix = "Bearer ";
 	public String generateJwtToken(Authentication authentication) {
