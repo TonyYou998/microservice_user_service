@@ -13,56 +13,56 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
-@MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
-@Getter
-@Setter
-public class BaseEntity {
-//    @Id
-////	id match csdl
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(updatable = false,unique = true)
-//
-//    protected Long id;
-@Id
-@GeneratedValue(generator = "UUID")
-@Type(type = "uuid-char")
-@GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
-private UUID id;
-    @JsonIgnore
-    @CreatedDate
-    @DateTimeFormat
-//	@JsonFormat
+    @MappedSuperclass
+    @EntityListeners(AuditingEntityListener.class)
+    @Getter
+    @Setter
+    public class BaseEntity {
+    //    @Id
+    ////	id match csdl
+    //    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //    @Column(updatable = false,unique = true)
+    //
+    //    protected Long id;
+    @Id
+    @GeneratedValue(generator = "UUID")
+    @Type(type = "uuid-char")
+    @GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
+    private UUID id;
+        @JsonIgnore
+        @CreatedDate
+        @DateTimeFormat
+    //	@JsonFormat
 
-    protected LocalDateTime createAt;
-    @JsonIgnore
-    @LastModifiedDate
-    @DateTimeFormat
-//	@JsonFormat
+        protected LocalDateTime createAt;
+        @JsonIgnore
+        @LastModifiedDate
+        @DateTimeFormat
+    //	@JsonFormat
 
-    protected LocalDateTime updateAt;
+        protected LocalDateTime updateAt;
 
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//
-//    public LocalDateTime getCreateAt() {
-//        return createAt;
-//    }
-//
-//    public void setCreateAt(LocalDateTime createAt) {
-//        this.createAt = createAt;
-//    }
-//
-//    public LocalDateTime getUpdateAt() {
-//        return updateAt;
-//    }
-//
-//    public void setUpdateAt(LocalDateTime updateAt) {
-//        this.updateAt = updateAt;
-//    }
+    //    public Long getId() {
+    //        return id;
+    //    }
+    //
+    //    public void setId(Long id) {
+    //        this.id = id;
+    //    }
+    //
+    //    public LocalDateTime getCreateAt() {
+    //        return createAt;
+    //    }
+    //
+    //    public void setCreateAt(LocalDateTime createAt) {
+    //        this.createAt = createAt;
+    //    }
+    //
+    //    public LocalDateTime getUpdateAt() {
+    //        return updateAt;
+    //    }
+    //
+    //    public void setUpdateAt(LocalDateTime updateAt) {
+    //        this.updateAt = updateAt;
+    //    }
 }
