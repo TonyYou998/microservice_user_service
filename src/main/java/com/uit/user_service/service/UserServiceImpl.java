@@ -84,13 +84,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Object getRecentProperty() {
-       Object o= restTemplate.getForObject("http://host-service/api/v1/host/get-recent",Object.class);
+       Object o= restTemplate.getForObject("http://host/api/v1/host/get-recent",Object.class);
         return  o;
     }
 
     @Override
     public GetPropertyDto getPropertyById(String propertyId) {
-        GetPropertyDto dto=restTemplate.getForObject("http://host-service/api/v1/host/get-property-by-id/"+propertyId,GetPropertyDto.class);
+        GetPropertyDto dto=restTemplate.getForObject("http://host/api/v1/host/get-property-by-id/"+propertyId,GetPropertyDto.class);
         User u= getUserInfoByUuid(dto.getHostUser());
         dto.setHostUser(u.getUsername());
         return  dto;
