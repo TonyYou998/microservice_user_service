@@ -1,7 +1,7 @@
 #Link to other services in my capstone
 1.user service
 2.booking service:https://github.com/TonyYou998/microservice_booking_service
-3.hotel service
+3.hotel service:https://github.com/TonyYou998/microservice_hotel_Service
 # microservice_user_service
 ## Start the application
 1. open your terminal and run docker-compose up -d command to start docker container of application
