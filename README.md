@@ -9,7 +9,7 @@ To deploy my capstone to k8s find in https://github.com/TonyYou998/microservice_
 ## Stop git add .env
 to prevent git add .env use command git rm --cached .env
 
-##Link to other services in my capstone
+## Link to other services repo
 1.user service:https://github.com/TonyYou998/microservice_user_service
 2.booking service:https://github.com/TonyYou998/microservice_booking_service
 3.hotel service:https://github.com/TonyYou998/microservice_hotel_Service
